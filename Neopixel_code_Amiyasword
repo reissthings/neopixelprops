@@ -3,7 +3,6 @@
 #define NUM_LEDS 21 
 CRGB leds[NUM_LEDS];
 #define PIN 5
-
 #define BUTTON 2
 byte selectedEffect=0;
 unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
@@ -23,30 +22,22 @@ void loop() {
     selectedEffect=0;
     EEPROM.put(0,0); 
   } 
-  
+ 
   switch(selectedEffect) {
-    
-
-
     case 1 : {
                 // rainbowCycle - speed delay
                 rainbowCycle(7);
                 break;
               }
-
-
-
-
-
+              
     case 2 : {
                 // meteorRain - Color (red, green, blue), meteor size, trail decay, random trail decay (true/false), speed delay 
                 meteorRain( 0xFF, 0x0, 0x0,1, 400, true, 20);
                 
                 break;
               }
+              
     case 3 : {
-
-
       simple();
       break;
     }
@@ -54,7 +45,6 @@ void loop() {
 }
 
 void changeEffect()
-
  {
   if (digitalRead (BUTTON) == HIGH) {
     selectedEffect++;
@@ -114,16 +104,6 @@ void FadeInOut(byte red, byte green, byte blue){
 }
 
 
-
-
-
-
-
-
-
-
-
-
 void rainbowCycle(int SpeedDelay) {
   byte *c;
   uint16_t i, j;
@@ -160,8 +140,6 @@ byte * Wheel(byte WheelPos) {
 
   return c;
 }
-
-
 
 
 void Fire(int Cooling, int Sparking, int SpeedDelay) {
@@ -280,9 +258,6 @@ void simple() {
 
 
 // *** REPLACE TO HERE ***
-
-
-
 // ***************************************
 // ** FastLed/NeoPixel Common Functions **
 // ***************************************
